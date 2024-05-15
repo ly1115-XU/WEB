@@ -9,9 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/style1.css">
     <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/layer.js"></script>
+    <script type="text/javascript" src="js/cart.js"></script>
+<%--    <script>--%>
+<%--        window.addEventListener("unload", function(event) {--%>
+<%--            // 向 Servlet 发送请求--%>
+<%--            var xhr = new XMLHttpRequest();--%>
+<%--            xhr.open("GET", "CloseServlet", true);--%>
+<%--            xhr.send();--%>
+<%--        });--%>
+
+
+<%--    </script>--%>
 </head>
 <body>
 <%--<%@include file="header.jsp"%>--%>
@@ -28,8 +40,17 @@
 <%--<c:if test="${empty user}"><%response.sendRedirect("/index");%></c:if>--%>
 <%
     User u=(User)request.getSession().getAttribute("user");
+    String off=(String)request.getSession().getAttribute("logoff");
     OrderService oService=new OrderService();
-    if(u==null) {
+//    if(u==null&& off.equals("success")) {
+//        request.setAttribute("msg","注销成功！");
+////        request.getSession().setAttribute("off",null);
+////        request.removeAttribute("msg");
+//        request.getRequestDispatcher("user_login.jsp").forward(request,response);
+//
+//    }
+//    else
+   if(u==null) {
         request.setAttribute("failMsg","你还未登录，请登陆后再查看！");
         request.getRequestDispatcher("user_login.jsp").forward(request,response);
     }
@@ -45,9 +66,11 @@
             <c:if test="${!empty failMsg}">
                 <div class="alter alert-danger">${failMsg}</div>
             </c:if>
+
             <div class="register-top-grid">
                 <h3>个人中心</h3>
                 <form action="${pageContext.request.contextPath}/user_changeaddress" method="post">
+
                     <h4>收货信息</h4>
                     <div class="input">
                         <span>收货人<label></label></span>
@@ -81,14 +104,32 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="register-but text-center">
+<%--                        <a class="btn btn-warning">注销账号</a>--%>
                         <input type="submit" value="提交">
                     </div>
+
                 </form>
             </div>
+            <div class="register-but text-right" style="color: #ff0709">
+<%--                <a class="btn btn-danger" href="${pageContext.request.contextPath}/" onclick="return confirm('确认要注销账号吗？')">注销账号</a>--%>
+<%--                <a class="btn btn-warning" onclick="document.getElementById('myModal').style.display = 'block'; return false;">注销账号</a>--%>
+<!--    <a class="btn btn-info" href="javascript:buy();">增加</a>-->
+                <a class="btn btn-danger" onclick="document.getElementById('myModal').style.display = 'block';return false;">注销账号</a>
+            </div>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <p>确认要注销账号吗？</p>
+<%--                    <a id="confirmBtn" class="modal-btn" href="${pageContext.request.contextPath/log_off}">确认</a>--%>
+                    <a id="confirmBtn" class="btn btn-success" href="${pageContext.request.contextPath}/log_off">确认</a>
+                    <a id="cancelBtn" class="btn btn-danger" onclick="document.getElementById('myModal').style.display='none';">取消</a>
+                </div>
+            </div>
+
             <div class="clearfix"></div>
         </div>
     </div>
 </div>
+<div style="color: #9acfea"
 <%--<jsp:include page="/footer.jsp"></jsp:include>--%>
 </body>
 </html>

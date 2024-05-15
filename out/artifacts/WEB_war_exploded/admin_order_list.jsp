@@ -9,10 +9,17 @@
     <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 <div class="container-fluid">
-    <jsp:include page="header1.jsp"></jsp:include>
+<%--    <jsp:include page="header1.jsp"></jsp:include>--%>
+    <c:if test="${user.ismanage}">
+        <jsp:include page="header_manage.jsp"></jsp:include>
+    </c:if>
+    <c:if test="${user.isadmin}">
+        <jsp:include page="header1.jsp"></jsp:include>
+    </c:if>
     <br><br><br/>
     <ul role="tablist" class="nav nav-tabs">
         <li <c:if test="${status==0}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorder_list">全部订单</a> </li>
@@ -73,7 +80,7 @@
                     <c:if test="${order.status==3}">
                         <a class="btn btn-warning" href="${pageContext.request.contextPath}/adminorder_status?id=${order.id}&status=4">完成</a>
                     </c:if>
-                    <a class="btn btn-danger" href="${pageContext.request.contextPath}/adminorder_delete?id=${order.id}&pageNumber={p.pageNumber}&status=${status}">删除</a>
+                    <a class="btn btn-danger" href="${pageContext.request.contextPath}/adminorder_delete?id=${order.id}&status=${status}">删除</a>
                 </td>
             </tr>
         </c:forEach>

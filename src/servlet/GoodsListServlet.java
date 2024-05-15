@@ -1,7 +1,6 @@
 package servlet;
 
 import model.Goods;
-import model.Page;
 import model.Type;
 import service.GoodsService;
 import service.TypeService;
@@ -43,6 +42,7 @@ public class GoodsListServlet extends HttpServlet {
 //        }
 //        Page page = gService.selectPageByTypeID(id,pageNumber);
         List<Goods>list=gService.selectGoodsByTypeID(id);
+
         //bug处理
 //        if(page.getTotalPage()==0){
 //            page.setTotalPage(1);
@@ -56,7 +56,7 @@ public class GoodsListServlet extends HttpServlet {
 //        }
 
         request.setAttribute("list",list);
-        System.out.println(list.size());
+//        System.out.println(list.size());
         //将商品数据放入范围
         request.setAttribute("id",String.valueOf(id));
         //请求转发goods_list.jsp

@@ -1,12 +1,7 @@
 package servlet;
 
-import model.Goods;
-import model.Order;
-import model.OrderItem;
-import model.Sold;
-import service.GoodsService;
-import service.OrderItemService;
-import service.OrderService;
+import model.*;
+import service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "ADMINSoldlistServlet",urlPatterns = "/adminorderitems")
 public class ADMINSoldlistServlet extends HttpServlet {
-    OrderItemService oiService=new OrderItemService();
+    private OrderItemService oiService=new OrderItemService();
+    private TypeService tService=new TypeService();
+    private OperationItemService opiService=new OperationItemService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int typeid=0;
+        int typeid=Integer.parseInt(request.getParameter("type"));
         List<Sold>oilist=null;
         if(request.getParameter("type")!=null)
         {
@@ -64,6 +62,30 @@ public class ADMINSoldlistServlet extends HttpServlet {
 //        System.out.println(list);
 //        System.out.println(totalamount);
 //        System.out.println(totalprice);
+        OperationItem opitem=new OperationItem();
+
+        opitem.setOp_datetime(new Date());
+        User user=(User)request.getSession().getAttribute("user");
+        opitem.setUser_id(user.getId());
+
+        try {
+            opitem.setOperation("销售统计-销售人员"+user.getId()+"查看了种类"+tService.getTypeNameByID(typeid)+"的销售统计");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        String ip_address=null;
+//        AdminBigdata abd=null;
+        if(request.getHeader("x-forwarded-for")==null)
+        {
+            ip_address=request.getRemoteAddr();
+        }
+        else
+        {
+            ip_address=request.getHeader("x-forwarded-for");
+        }
+        opitem.setIp_address(ip_address);
+        opiService.addOperationItem(opitem);
         request.setAttribute("oilist",oilist);
 //        request.setAttribute("totalamount",totalamount);
 //        request.setAttribute("totalprice",totalprice);

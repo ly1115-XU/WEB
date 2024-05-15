@@ -31,7 +31,7 @@ public class OrderItem {
                 ", amount=" + amount +
                 ", goodsName='" + goodsName + '\'' +
                 ", goods=" + goods +
-                ", order=" + order +
+//                ", order=" + order +
                 ", type=" + type +
                 '}';
     }

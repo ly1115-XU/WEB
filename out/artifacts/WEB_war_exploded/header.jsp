@@ -48,7 +48,7 @@
                 <%--                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>--%>
                 <li><a></a></li>
                 <li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-                <li><a href="${pageContext.request.contextPath}/goods_list?typeid=0">热销</a></li>
+                <li><a href="${pageContext.request.contextPath}/hotgoods_list">热销</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">商品分类<span class="caret"></span></a>
                     <ul class="dropdown-menu">

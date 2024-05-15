@@ -10,10 +10,14 @@
     <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 <div class="container-fluid">
+
+
     <jsp:include page="header1.jsp"></jsp:include>
+
     <br><br>
     <form class="form-horizontal" action="${pageContext.request.contextPath}/admingoods_add" method="post" >
         <div class="form-group">
@@ -59,22 +63,23 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-1 control-label">种类</label>
-            <div class="col-sm-6">
-<%--                <input type="text" class="form-control" id="input_name8" name="typeid" required="required">--%>
-                <select class="form-control" id="select" name="typeid">
-                    <c:forEach items="${typeList}" var="t">
-                        <option value="${t.id}">${t.name}</option>
-                    </c:forEach>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-sm-offset-1 col-sm-10">
                 <button type="submit" class="btn btn-success">提交</button>
                 <button type="reset" class="btn btn-success">重置</button>
             </div>
         </div>
+<%--        <div class="form-group">--%>
+<%--            <label class="col-sm-1 control-label">种类</label>--%>
+<%--            <div class="col-sm-6">--%>
+<%--&lt;%&ndash;                <input type="text" class="form-control" id="input_name8" name="typeid" required="required">&ndash;%&gt;--%>
+<%--                <select class="form-control" id="select" name="typeid">--%>
+<%--                    <c:forEach items="${typeList}" var="t">--%>
+<%--                        <option value="${t.id}">${t.name}</option>--%>
+<%--                    </c:forEach>--%>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+
     </form>
 </div>
 </body>

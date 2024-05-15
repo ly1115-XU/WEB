@@ -3,16 +3,13 @@ package dao;
 import model.Goods;
 import model.Recommend;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.*;
-import org.apache.taglibs.standard.tag.common.sql.DataSourceUtil;
 import utils.DBUtil;
 
-import javax.sql.DataSource;
+import java.math.BigInteger;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.*;
 
 public class GoodsDao {
     public List<Map<String,Object>>getGoodsList(int recommendType) throws SQLException {//得到推荐商品的id,name,cover,price ,name typename
@@ -84,6 +81,7 @@ public List<Goods>selectGoodsByTypeID(int typeID) throws SQLException {
         {
             String sql="select count(*) from goods";
             return ((Long)r.query(sql,new ScalarHandler())).intValue();
+//            return ((Long)r.query(sql,new ScalarHandler()));
         }
         else
         {
@@ -185,6 +183,32 @@ public List<Goods>selectGoodsByTypeID(int typeID) throws SQLException {
 //        String sql = "select g.id,g.name,g.cover,g.image1,g.image2,g.price,g.intro,g.stock,t.id typeid,t.name typename from goods g,type t where g.id = ? and g.type_id=t.id";
         String sql = "select g.id,g.name,g.cover,g.image1,g.image2,g.price,g.intro,g.stock,t.id typeid,t.name typename from goods g,type t where g.name = ? and g.type_id=t.id";
         return r.query(sql, new BeanHandler<Goods>(Goods.class),goodsName);
+    }
+    //减小库存，购买成功
+    public void reduceStock(int goodsid,int amount) throws SQLException {
+        QueryRunner r=new QueryRunner(DBUtil.getDataSource());
+        String sql="update goods set stock=? where id=?";
+        r.update(sql,getGoodsById(goodsid).getStock()-amount,goodsid);
+    }
+
+    public void UpdateStock(int stockadd, int id) throws SQLException {
+        QueryRunner r=new QueryRunner(DBUtil.getDataSource());
+        String sql="update goods set stock=? where id=?";
+        r.update(sql,getGoodsById(id).getStock()+stockadd,id);
+    }
+
+    public List getAllGoodsid() throws SQLException {
+        QueryRunner r=new QueryRunner(DBUtil.getDataSource());
+        String sql="select id from goods";
+        return r.query(sql,new ColumnListHandler());
+    }
+
+    public int getLastId() throws SQLException {
+        QueryRunner r=new QueryRunner(DBUtil.getDataSource());
+        String sql="SELECT LAST_INSERT_ID()";
+//        return (int)r.query(sql,new ScalarHandler());
+        BigInteger result = (BigInteger) r.query(sql, new ScalarHandler());
+        return result.intValue(); // 将 BigInteger 转换为 int
     }
 }
 

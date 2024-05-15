@@ -1,7 +1,7 @@
 package service;
 
 import dao.OrderItemDao;
-import model.OrderItem;
+import model.GoodsSale;
 import model.Sold;
 
 import java.sql.SQLException;
@@ -12,13 +12,13 @@ public class OrderItemService {
 //    int typeid=0;
     public List<Sold> getOrderItemListByID(int typeid) throws SQLException {
         List<Sold>list=null;
-        list=oiDao.getOrderItemByTypeID(typeid);
+        list=oiDao.getOrderItemByID(typeid);
 //        System.out.println(list);
         return list;
     }
 
-    public double gettotalamount(int typeid) throws SQLException {
-        double total=(double)oiDao.getTotalAmount(typeid);
+    public int gettotalamount(int typeid) throws SQLException {
+        int total=(int)oiDao.getTotalAmount(typeid);
         return total;
     }
 
@@ -30,5 +30,18 @@ public class OrderItemService {
     public int getOrderid(int id) throws SQLException {
         int orderid=oiDao.getOrderIdById(id);
         return orderid;
+    }
+
+//    public List<OrderItem>getOrderItemList(int typeid)
+    public List<GoodsSale> getOrderItemListByTypeID(int typeid) throws SQLException {
+        List<GoodsSale>gsList=null;
+        gsList=oiDao.getOrderItemByTypeID(typeid);
+        return gsList;
+    }
+//    getOrderItemByTypeIDStats
+    public List<GoodsSale> getOrderItemByTypeIDStats(int typeid) throws SQLException {
+        List<GoodsSale>gsList=null;
+        gsList=oiDao.getOrderItemByTypeIDStats(typeid);
+        return gsList;
     }
 }

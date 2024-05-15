@@ -9,12 +9,19 @@
     <script type="text/javascript" src="js/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 <div class="container-fluid">
-    <jsp:include page="header1.jsp"></jsp:include>
+<%--    <jsp:include page="header1.jsp"></jsp:include>--%>
+    <c:if test="${user.ismanage}">
+        <jsp:include page="header_manage.jsp"></jsp:include>
+    </c:if>
+    <c:if test="${user.isadmin}">
+        <jsp:include page="header1.jsp"></jsp:include>
+    </c:if>
     <br><br>
-    <form class="form-horizontal" action="${pageContext.request.contextPath}/admingoods_edit" method="post">
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/admingoods_edit?typeid=${user.admintype}" method="post">
 <%--        <input type="hidden" name="id" value="${g.id}">--%>
 <%--        <input type="hidden" name="cover" value="${g.cover}">--%>
 <%--        <input type="hidden" name="image1" value="${g.image1}">--%>

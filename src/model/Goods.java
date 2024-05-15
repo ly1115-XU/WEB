@@ -19,6 +19,24 @@ public class Goods {
         super();
     }
 
+    public Goods(int id, String name, String cover,
+                 String image1, String intro, String image2,
+                 float price, int stock, Type type,
+                 boolean isScroll, boolean isHot, boolean isNew) {
+        this.id = id;
+        this.name = name;
+        this.cover = cover;
+        this.image1 = image1;
+        this.intro = intro;
+        this.image2 = image2;
+        this.price = price;
+        this.stock = stock;
+        this.type = type;
+        this.isScroll = isScroll;
+        this.isHot = isHot;
+        this.isNew = isNew;
+    }
+
     @Override
     public String toString() {
         return "Goods{" +
@@ -110,6 +128,10 @@ public class Goods {
 //    }
     public Type getType() {
         return type;
+    }
+
+    public int getTypeId(){
+        return type.getId();
     }
 
     public void setType(Type type) {

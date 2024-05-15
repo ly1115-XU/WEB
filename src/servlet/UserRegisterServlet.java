@@ -2,6 +2,7 @@ package servlet;
 
 import model.User;
 import org.apache.commons.beanutils.BeanUtils;
+import service.RecommendGoodsService;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -11,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 
 @WebServlet("/user_register")
 public class UserRegisterServlet extends HttpServlet {
+    private RecommendGoodsService rgService=new RecommendGoodsService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //拿到前台数据，封装
 
@@ -29,8 +32,16 @@ public class UserRegisterServlet extends HttpServlet {
 //        System.out.println("有进行这一步");
         //调用业务层，判断
         UserService uService = new UserService();
+
         if(uService.register(user)){
             request.setAttribute("msg","恭喜您注册成功，请登录");
+            try {
+//            System.out.println(user.getId());
+                int user_id=uService.getUserIdByName(user.getUsername());
+                rgService.addUser(user_id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
             request.getRequestDispatcher("user_login.jsp").forward(request,response);
         }else{
             request.setAttribute("msg","用户名或邮箱已被注册，请尝试其他用户名或邮箱");

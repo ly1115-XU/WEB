@@ -22,6 +22,27 @@
 <%--    <script type="text/javascript" src="js/cart.js"></script>--%>
 <%--&lt;%&ndash;    <title>首页</title>&ndash;%&gt;--%>
 <%--</head>--%>
+<head>
+<%--    <script>--%>
+<%--        window.addEventListener("beforeunload", function(event) {--%>
+<%--            //管壁页面时执行--%>
+<%--            // 向 Servlet 发送请求--%>
+<%--            var xhr = new XMLHttpRequest();--%>
+<%--            xhr.open("GET", "CloseServlet", true);--%>
+<%--            xhr.send();--%>
+<%--        });--%>
+
+<%--    </script>--%>
+    <script>
+        window.addEventListener("unload", function(event) {
+            //关闭网站时
+            // 向 Servlet 发送请求
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "CloseServlet", true);
+            xhr.send();
+        });
+    </script>
+</head>
 <body>
 <%--  <div class="jumbotron">--%>
 <%--    <h1>Hello, world!</h1>--%>
@@ -48,7 +69,8 @@
                 <%--                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>--%>
                 <li><a></a></li>
                 <li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-                <li><a href="${pageContext.request.contextPath}/goods_list?typeid=0">热销</a></li>
+                <li><a href="${pageContext.request.contextPath}/hotgoods_list">热销</a></li>
+                <li><a href="${pageContext.request.contextPath}/recommend_servlet">猜你喜欢</a> </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">商品分类<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -56,9 +78,6 @@
                             TypeService typeService=new TypeService();
                             List<Type>typeList=typeService.getAllType();
                             request.setAttribute("typeList",typeList);
-//              System.out.println(typeList);
-//              for (Type t : typeList) {
-//                System.out.println("Name: " + t.getName());}
                         %>
 
                         <c:forEach var="t" items="${typeList}">
@@ -90,6 +109,8 @@
 <%--                    </ul>--%>
 <%--                </li>--%>
                 <li><a href="${pageContext.request.contextPath}/exit"><span>退出登录</span></a></li>
+
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

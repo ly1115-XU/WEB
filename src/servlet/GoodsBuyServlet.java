@@ -3,7 +3,9 @@ package servlet;
 import model.Goods;
 import model.Order;
 import model.Type;
+import model.User;
 import service.GoodsService;
+import service.RecommendGoodsService;
 import service.TypeService;
 
 import javax.servlet.ServletException;
@@ -12,10 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "GoodsBuyServlet",urlPatterns = "/goods_buy")
 public class GoodsBuyServlet extends HttpServlet {
     private GoodsService gService=new GoodsService();
+    private RecommendGoodsService rgService=new RecommendGoodsService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        System.out.println("进行到了post");
         //1. 声明车
@@ -31,8 +35,15 @@ public class GoodsBuyServlet extends HttpServlet {
        // o=new Order();?如果ssession中没有则应该创建一个，而不是每次都创建吧
         request.getSession().setAttribute("order",o);
         //3.获取前台的参数 goodsid查询商品信息
+        User user=(User)request.getSession().getAttribute("user");
         int goodsid = Integer.parseInt(request.getParameter("goodsid"));
         Goods goods = gService.getGoodsById(goodsid);
+        try {
+            rgService.updateBuyPre(user.getId(),goods.getId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 //        System.out.println(goods);
         TypeService tService=new TypeService();
         Type type=tService.selectByGoodsId(goodsid);
@@ -41,15 +52,15 @@ public class GoodsBuyServlet extends HttpServlet {
 //        System.out.println(goods);
 
         //加入购物车 库存问题
+//        System.out.println(goods.getStock());
+//        System.out.println(o.getAmount());
         if(goods.getStock()>0)//库存大于0，加入购物车
         {
-            o.addGoods(goods);
+            if(!o.addGoods(goods))
+            {
+                request.getSession().setAttribute("failMsg","库存不足！");
+            }
         }
-//        else
-//        {
-//            request.setAttribute("failMsg","库存不足，添加失败！");
-//            request.getRequestDispatcher("/goods_cart.jsp").forward(request,response);
-//        }
         request.getSession().setAttribute("order",o);
         response.getWriter().print("ok");
 //        System.out.println("在购买时是否有数据："+o.getAddress());

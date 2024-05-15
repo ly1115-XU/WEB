@@ -4,6 +4,7 @@ import model.Type;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import utils.DBUtil;
 
 import java.sql.SQLException;
@@ -53,5 +54,11 @@ public class TypeDao {
         String sql="select type.* from type,goods where goods.type_id=type.id and goods.id=?";
         return r.query(sql,new BeanHandler<Type>(Type.class),goodsid);
 
+    }
+
+    public String getTypeNameByID(int typeid) throws SQLException {
+        QueryRunner r=new QueryRunner(DBUtil.getDataSource());
+        String sql="select name from type where id=?";
+        return (String)r.query(sql,new ScalarHandler(),typeid);
     }
 }

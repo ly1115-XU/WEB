@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>订单提交</title>
@@ -16,12 +17,15 @@
 <c:choose>
     <c:when test="${not empty user}">
         <jsp:include page="header_1.jsp"></jsp:include>
+<%--        <%@include file="header_1.jsp"%>--%>
 
     </c:when>
     <c:otherwise>
         <%@include file="header.jsp"%>
+<%--        <jsp:include page="header.jsp"></jsp:include>--%>
     </c:otherwise>
 </c:choose>
+<%--<c:if --%>
 
 <div class="cart-items">
     <div class="container">

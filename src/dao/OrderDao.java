@@ -6,7 +6,6 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.apache.taglibs.standard.tag.common.sql.DataSourceUtil;
 import utils.DBUtil;
 
 import java.math.BigInteger;
@@ -41,7 +40,8 @@ public class OrderDao {
     }
     public List<OrderItem>selectAllItem(int orderid) throws SQLException {
         QueryRunner r = new QueryRunner(DBUtil.getDataSource());
-        String sql="select i.id,i.price,i.amount,g.name from orderitem i,goods g where order_id=? and i.goods_id=g.id";
+        String sql="select i.id,i.price,i.amount,g.name as goodsName from orderitem i" +
+                ",goods g where order_id=? and i.goods_id=g.id";
         return r.query(sql,new BeanListHandler<OrderItem>(OrderItem.class),orderid);
     }
     public int getOrderCount(int status) throws SQLException {
@@ -102,4 +102,15 @@ public class OrderDao {
 //        return r.query(sql,new ScalarHandler(),orderid);
         return r.query(sql,new BeanHandler<Order>(Order.class),orderid);
     }
+
+    public double getCostByUserId(int id) throws SQLException {
+        QueryRunner r = new QueryRunner(DBUtil.getDataSource());
+        String sql = "select sum(total) from orders where user_id=?";
+        Number result = (Number)r.query(sql, new ScalarHandler(), id);
+
+        // 如果结果为null，则返回0.0
+        return result != null ? result.doubleValue() : 0.0;
+    }
+
+
 }

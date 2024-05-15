@@ -28,11 +28,20 @@
 <body>
 <c:choose>
     <c:when test="${not empty user}">
-        <jsp:include page="header_1.jsp"></jsp:include>
+
+        <c:choose>
+            <c:when test="${user.isadmin}">
+                <jsp:include page="header1.jsp"></jsp:include>
+            </c:when>
+            <c:otherwise>
+                <jsp:include page="header_1.jsp"></jsp:include>
+            </c:otherwise>
+        </c:choose>
 
     </c:when>
     <c:otherwise>
         <%@include file="header.jsp"%>
+
     </c:otherwise>
 </c:choose>
 

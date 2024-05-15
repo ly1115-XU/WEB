@@ -11,18 +11,19 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/layer.js"></script>
     <script type="text/javascript" src="js/cart.js"></script>
+
 </head>
 <body>
 
 <div class="container-fluid">
     <jsp:include page="header1.jsp"></jsp:include>
-    <ul role="tablist" class="nav nav-tabs">
-        <li <c:if test="${type==0}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems">全部商品</a></li>
-        <li <c:if test="${type==1}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=1">饼干</a></li>
-        <li <c:if test="${type==2}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=2">蛋糕</a></li>
-        <li <c:if test="${type==3}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=3">饮品</a></li>
-        <li <c:if test="${type==4}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=4">其他</a></li>
-    </ul>
+<%--    <ul role="tablist" class="nav nav-tabs">--%>
+<%--        <li <c:if test="${type==0}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems">全部商品</a></li>--%>
+<%--        <li <c:if test="${type==1}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=1">饼干</a></li>--%>
+<%--        <li <c:if test="${type==2}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=2">蛋糕</a></li>--%>
+<%--        <li <c:if test="${type==3}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=3">饮品</a></li>--%>
+<%--        <li <c:if test="${type==4}">class="active"</c:if> role="presentation"><a href="${pageContext.request.contextPath}/adminorderitems?type=4">其他</a></li>--%>
+<%--    </ul>--%>
     <table class="table table-bordered table-hover">
         <tr>
             <th width="5%">ID</th>

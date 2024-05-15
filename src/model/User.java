@@ -8,15 +8,17 @@ public class User {
     private String name;
     private String phone;
     private String address;
+    private int admintype;
     private boolean isadmin=false;
     private boolean isvalidate=false;
-
+    private boolean ismanage=false;
 
     public User(){
 
     }
 
-    public User(int id, String username, String email, String password, String name, String phone, String address, boolean isadmin, boolean isvalidate) {
+    public User(int id, String username, String email, String password, String name, String phone,
+                String address, int admintype, boolean isadmin, boolean isvalidate, boolean ismanage) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -24,8 +26,10 @@ public class User {
         this.name = name;
         this.phone = phone;
         this.address = address;
+        this.admintype = admintype;
         this.isadmin = isadmin;
         this.isvalidate = isvalidate;
+        this.ismanage = ismanage;
     }
 
     @Override
@@ -38,13 +42,31 @@ public class User {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", admintype=" + admintype +
                 ", isadmin=" + isadmin +
                 ", isvalidate=" + isvalidate +
+                ", ismanage=" + ismanage +
                 '}';
     }
 
     public boolean isIsadmin() {
         return isadmin;
+    }
+
+    public int getAdmintype() {
+        return admintype;
+    }
+
+    public void setAdmintype(int admintype) {
+        this.admintype = admintype;
+    }
+
+    public boolean isIsmanage() {
+        return ismanage;
+    }
+
+    public void setIsmanage(boolean ismanage) {
+        this.ismanage = ismanage;
     }
 
     public boolean isIsvalidate() {

@@ -5,12 +5,11 @@ import dao.OrderDao;
 import model.Goods;
 import model.Order;
 import model.OrderItem;
-import model.Page;
-import org.apache.taglibs.standard.tag.common.sql.DataSourceUtil;
 import utils.DBUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService {
@@ -29,10 +28,14 @@ public class OrderService {
             for(OrderItem item:order.getItemMap().values()){
 //                System.out.println(item.getGoods());
                 Goods g=item.getGoods();
-//                Goods g=gDao.getGoodsByName(item.getGoodsName());
+                //减小库存
+                gDao.reduceStock(g.getId(),item.getAmount());
+//                Goods g=gDao.
+//                (item.getGoodsName());
 //                System.out.println(g);
 //                System.out.println(g.getType());
                 int typeid=g.getType().getId();
+                //
 //                System.out.println(typeid);
                 oDao.insertOrderItem(con,item,typeid);
                 con.commit();
@@ -129,5 +132,32 @@ public class OrderService {
 
         Order order=oDao.getOrder(orderid);
         return order;
+    }
+
+    public List<String> selectImpression(int user_id) {
+        List<Order>list=null;
+        List<String>impression=new ArrayList<>();
+        try {
+            list=oDao.selectAll(user_id);
+            for(Order o:list){
+                List<OrderItem> l=oDao.selectAllItem(o.getId());
+                o.setItemList(l);
+                for(OrderItem item:l)
+                {
+//                    System.out.println("orderitem"+item);
+
+                    impression.add(item.getGoodsName());
+                }
+//                impression.add()
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return impression;
+    }
+
+
+    public double getCostByUserId(int id) throws SQLException {
+        return oDao.getCostByUserId(id);
     }
 }

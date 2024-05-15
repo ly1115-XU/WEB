@@ -72,4 +72,11 @@ public class TypeService {
         }
         return type;
     }
+
+    public String getTypeNameByID(int typeid) throws SQLException {
+        String typename=null;
+        typename=tDao.getTypeNameByID(typeid);
+//        System.out.println(typename+"?");
+        return typename;
+    }
 }

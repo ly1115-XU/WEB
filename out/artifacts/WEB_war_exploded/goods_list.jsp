@@ -64,12 +64,19 @@
 <%--    </div>--%>
 <%--</div>--%>
 <div class="products">
+    <c:if test="${!empty failMsg}">
+        <div class="alert alert-danger">${failMsg}</div>
+        <%
+            request.getSession().removeAttribute("failMsg");
+        %>
+    </c:if>
     <div class="container">
 <%--        <h2><c:choose><c:when test="${empty t}">全部系列</c:when><c:otherwise>${t.name}</c:otherwise> </c:choose></h2>--%>
 
         <div class=" product-model-sec">
 <%--            col-md-12--%>
             <c:forEach items="${list}" var="g">
+<%--                展示商品--%>
 <%--                begin="${empty param.pageNumber ? 0 : (param.pageNumber-1)*8}"--%>
 
 

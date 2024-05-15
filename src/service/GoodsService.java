@@ -170,4 +170,12 @@ public List<Goods>selectGoodsByTypeID(int typeID){
             throwables.printStackTrace();
         }
     }
+
+    public void UpdateStock(int stockadd, int id) throws SQLException {
+        gDao.UpdateStock(stockadd,id);
+    }
+
+    public int getLstId() throws SQLException {
+       return gDao.getLastId();
+    }
 }

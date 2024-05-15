@@ -20,5 +20,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="d3.v6" level="application" />
+    <orderEntry type="library" name="d3-cloud" level="application" />
+    <orderEntry type="library" name="wordcloud2.js" level="application" />
+    <orderEntry type="library" name="d3.layout.cloud" level="application" />
   </component>
 </module>

@@ -41,11 +41,18 @@ public class Order {
         user.setUsername(username);
     }
 
-    public void addGoods(Goods g){ //加购商品
+    public boolean addGoods(Goods g){ //加购商品
 //        System.out.println("111");
         if(itemMap.containsKey(g.getId())){ //购物车里面有这个商品
             OrderItem item=itemMap.get(g.getId());//拿到车里面的这个商品
-            item.setAmount(item.getAmount()+1);//数量加1
+            if(g.getStock()> item.getAmount())
+            {
+                item.setAmount(item.getAmount()+1);//数量加1
+            }
+            else
+            {
+                return false;
+            }
         }
         else{//没有这个商品
             //创建出这个item元素
@@ -56,6 +63,7 @@ public class Order {
             amount++;
         }
         total=PriceUtils.add(total,g.getPrice());
+        return true;
     }
 
     public void lessen(int goodsid){ //订单中某一项的数目减1

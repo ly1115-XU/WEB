@@ -1809,8 +1809,9 @@ p span.overline {
     margin-top: 1em;
 }
 
-.register-but input[type="submit"] {
-    border: 2px solid #F07818;
+.register-but input[type="submit"].specific-class{
+    /*border: 2px solid #F07818;*/
+    border:2px solid #000000;
     color: #FFF;
     font-size: 1.1em;
     padding: 0.5em 2em;
@@ -1820,12 +1821,13 @@ p span.overline {
     -o-transition: 0.5s all;
     display: inline-block;
     outline: none;
-    background-color: #F07818;
+    /*background-color: #F07818;*/
+    background-color: #5bc0de;
 }
 
-.register-but input[type="submit"]:hover {
+.register-but input[type="submit"]:hover.specific-class{
     background: #FFF;
-    color: #F07818;
+    color: #ffffff;
 }
 
 .register-bottom-grid {
@@ -4086,7 +4088,64 @@ span.glyphicon.glyphicon-map-marker {
     }
 
 }
+.accout.container.register.register-but>input[type="reset"] {
+    border: 2px solid red;
+    color: #FFF;
+
+    padding: 0.5em 2em;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    display: inline-block;
+    outline: none;
+    background-color: red;
+}
+
+.accout.container.register.register-but>input[type="submit"]:hover {
+    background: #FFF;
+    color: red;
+}
+
+.tr.th{
+    text-align: center;
+}
+
+.tr.td{
+    text-align: center;
+}
+
+.stock-status {
+    font-weight: bold; /* 加粗字体 */
+}
+
+.stock-status.zero {
+    color: red; /* 红色字体 */
+}
+
+.stock-status.low {
+    color: yellow; /* 黄色字体 */
+}
+
+.stock-status.enough {
+    color: black; /* 黑色字体 */
+}
 
 
+.center-text {
+    text-align: center;
+    /*text-align: center; !* 让单元格内容居中显示 *!*/
+    vertical-align: middle; /* 让单元格内容垂直居中显示 */
+}
 
+/*.no-border {*/
+/*    border-collapse: collapse;*/
+/*    border: none;*/
+/*}*/
+.table-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 /*--//responsive-design---*/

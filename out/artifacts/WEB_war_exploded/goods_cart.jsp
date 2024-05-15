@@ -26,7 +26,12 @@
 
 <div class="cart-items">
 <%--    <div class="alert alert-danger">很抱歉的通知您，因为本网站还在开发中，因此提交订单时，购物车只能有一样物品，否则后台会记录失败</div>--%>
-
+    <c:if test="${!empty failMsg}">
+        <div class="alert alert-danger">${failMsg}</div>
+        <%
+            request.getSession().removeAttribute("failMsg");
+        %>
+    </c:if>
     <div class="content">
         <br>
         <br>

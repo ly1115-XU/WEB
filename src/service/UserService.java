@@ -1,7 +1,6 @@
 package service;
 
 import dao.UserDao;
-import model.Page;
 import model.User;
 
 import java.sql.SQLException;
@@ -104,6 +103,14 @@ public class UserService {
         list=uDao.selectUserList();
         return list;
     }
+
+    public List<User> getAdminUser() throws SQLException {
+        List<User>list=null;
+        list=uDao.selectAdminUserList();
+//        System.out.println(list);
+        return list;
+    }
+
     public boolean delete(int id){
         try {
             uDao.delete(id);
@@ -112,5 +119,17 @@ public class UserService {
             throwables.printStackTrace();
             return false;
         }
+    }
+
+    public void updateUser(User user) throws SQLException {
+        uDao.update(user);
+    }
+
+    public int getUserIdByName(String username) throws SQLException {
+        return uDao.getUserIdByName(username);
+    }
+
+    public List<User> getNormalUser() throws SQLException {
+        return uDao.getNormalUser();
     }
 }
