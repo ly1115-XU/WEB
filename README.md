@@ -7,43 +7,43 @@
 软件架构说明
 
 ├─src  
-│  │  c3p0-config.xml  cp30数据池的配置
+│  │  c3p0-config.xml    ***cp30数据池的配置***  
 │  │    
 │  ├─com  
 │  │  └─company  
 │  │          Main.java  
 │  │            
 │  ├─dao  
-│  │      AdminBigDataDao.java  
-│  │      GoodsDao.java  
-│  │      OperationItemDao.java  
-│  │      OrderDao.java  
-│  │      OrderItemDao.java  
-│  │      RecommendGoodsDao.java  
-│  │      TypeDao.java  
-│  │      UserBigDataDao.java  
-│  │      UserDao.java  
-│  │      ViewDao.java  
+│  │      AdminBigDataDao.java    ***管理人员大数据信息与数据库交互***  
+│  │      GoodsDao.java    ***商品信息与大数据交互***  
+│  │      OperationItemDao.java    ***操作日志***  
+│  │      OrderDao.java    ***订单信息***  
+│  │      OrderItemDao.java    ***订单项***  
+│  │      RecommendGoodsDao.java    ***推荐商品***  
+│  │      TypeDao.java    ***商品种类***  
+│  │      UserBigDataDao.java    ***普通用户大数据***  
+│  │      UserDao.java    ***普通用户信息***  
+│  │      ViewDao.java    ***浏览记录***  
 │  │      
 │  ├─filter  
-│  │      EncodeFilter.java  
+│  │      EncodeFilter.java  ***编码***  
 │  │        
-│  ├─model  
-│  │      AdminBigdata.java  
-│  │      Goods.java  
-│  │      GoodsSale.java  
-│  │      OperationItem.java  
-│  │      Order.java  
-│  │      OrderItem.java  
-│  │      Page.java  
-│  │      Recommend.java  
-│  │      Sale.java  
-│  │      Sold.java  
-│  │      Type.java  
-│  │      User.java  
-│  │      UserBigdata.java  
-│  │      UserImpression.java  
-│  │      View.java  
+│  ├─model  ***基本类***  
+│  │      AdminBigdata.java  ***管理人员&&销售人员基本类***  
+│  │      Goods.java  ***商品***  
+│  │      GoodsSale.java  ***售卖情况***  
+│  │      OperationItem.java  ***操作日志***  
+│  │      Order.java  ***订单***  
+│  │      OrderItem.java  ***订单项***  
+│  │      Page.java  ***分页***  
+│  │      Recommend.java  ***推荐商品***  
+│  │      Sale.java  ***销售统计***  
+│  │      Sold.java  ***售卖记录***  
+│  │      Type.java  ***种类***  
+│  │      User.java  ***用户***  
+│  │      UserBigdata.java  ***普通用户大数据***  
+│  │      UserImpression.java  ***用户画像***  
+│  │      View.java  ***浏览记录***  
 │  │        
 │  ├─service  
 │  │      AdminBigDataService.java  
