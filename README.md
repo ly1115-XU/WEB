@@ -45,102 +45,102 @@
 │  │      UserImpression.java  ***用户画像***  
 │  │      View.java  ***浏览记录***  
 │  │        
-│  ├─service  
-│  │      AdminBigDataService.java  
-│  │      GoodsService.java  
-│  │      OperationItemService.java  
-│  │      OrderItemService.java  
-│  │      OrderService.java  
-│  │      RecommendGoodsService.java  
-│  │      TypeService.java  
-│  │      UserBigDataService.java  
-│  │      UserService.java  
-│  │      ViewService.java  
+│  ├─service  ***业务层***  
+│  │      AdminBigDataService.java  ***管理人员&&销售人员大数据***  
+│  │      GoodsService.java  ***商品***  
+│  │      OperationItemService.java  ***操作日志项***  
+│  │      OrderItemService.java  ***订单项***  
+│  │      OrderService.java  ***订单***  
+│  │      RecommendGoodsService.java  ***推荐商品***  
+│  │      TypeService.java  ***种类***  
+│  │      UserBigDataService.java  ***普通用户大数据***  
+│  │      UserService.java  ***用户***  
+│  │      ViewService.java  ***浏览记录***  
 │  │        
-│  ├─servlet  
-│  │      ADMINGoodsAddServlet.java  
-│  │      ADMINGoodsDeleteServlet.java  
-│  │      ADMINGoodsDetailServlet.java  
-│  │      ADMINGoodsEditServlet.java  
-│  │      ADMINGoodsEditshowServlet.java  
-│  │      ADMINGoodsListServlet.java  
-│  │      ADMINGoodsSaleServlet.java  
-│  │      ADMINGoodsStatueServlet.java  
-│  │      ADMINOrderDeleteServlet.java  
-│  │      ADMINOrderListServlet.java  
-│  │      ADMINOrderStatusServlet.java  
-│  │      ADMINSaleShowServlet.java  
-│  │      ADMINSaleStatsServlet.java  
-│  │      ADMINSoldlistServlet.java  
-│  │      ADMINStockAddServlet.java  
-│  │      ADMINUserAddServlet.java  
-│  │      ADMINUserChangeServlet.java  
-│  │      ADMINUserDeleteServlet.java  
-│  │      ADMINUserEditServlet.java  
-│  │      ADMINUserListServlet.java  
-│  │      ADMINViewListServlet.java  
-│  │      CloseServlet.java  
-│  │      ExitServlet.java  
-│  │      GoodsBuyServlet.java  
-│  │      GoodsDeleteServlet.java  
-│  │      GoodsDetailServlet.java  
-│  │      GoodsLessenServlet.java  
-│  │      GoodsListServlet.java  
-│  │      GoodsSearchServlet.java  
-│  │      HotGoodsServlet.java  
-│  │      LogOffServlet.java  
-│  │      OrderConfirmServlet.java  
-│  │      OrderListServlet.java  
-│  │      OrderSumbitServlet.java  
-│  │      RecommendGoodsServlet.java  
-│  │      UserChangeAddressServlet.java  
-│  │      UserChangePwdServlet.java  
-│  │      UserImpressionServlet.java  
-│  │      UserLoginServlet.java  
-│  │      UserRegisterServlet.java  
+│  ├─servlet  ***控制层***  
+│  │      ADMINGoodsAddServlet.java  ***销售人员商品添加***  
+│  │      ADMINGoodsDeleteServlet.java  ***销售人员商品删除***  
+│  │      ADMINGoodsDetailServlet.java  ***销售人员商品细节查看***  
+│  │      ADMINGoodsEditServlet.java  ***销售人员细节编辑***  
+│  │      ADMINGoodsEditshowServlet.java  ***销售人员细节获取展示***  
+│  │      ADMINGoodsListServlet.java   ***销售人员负责商品列表展示***  
+│  │      ADMINGoodsSaleServlet.java  ***销售人员商品售卖***  
+│  │      ADMINGoodsStatueServlet.java   ***商品状态***  
+│  │      ADMINOrderDeleteServlet.java  ***用户订单删除***  
+│  │      ADMINOrderListServlet.java  ***用户订单列表***  
+│  │      ADMINOrderStatusServlet.java  ***用户订单状态改变***  
+│  │      ADMINSaleShowServlet.java  ***销售情况展示***  
+│  │      ADMINSaleStatsServlet.java  ***销售状态展示***  
+│  │      ADMINSoldlistServlet.java  ***售卖列表***  
+│  │      ADMINStockAddServlet.java  ***商品库存添加***  
+│  │      ADMINUserAddServlet.java  ***管理人员添加新的销售人员***  
+│  │      ADMINUserChangeServlet.java  ***销售人员口令更改***  
+│  │      ADMINUserDeleteServlet.java  ***销售人员删除***  
+│  │      ADMINUserEditServlet.java  ***销售人员信息编辑***  
+│  │      ADMINUserListServlet.java  ***销售人员列表***  
+│  │      ADMINViewListServlet.java  ***商品浏览记录***  
+│  │      CloseServlet.java  ***窗口关闭***  
+│  │      ExitServlet.java  ***自动退出***  
+│  │      GoodsBuyServlet.java  ***商品购买***  
+│  │      GoodsDeleteServlet.java  ***商品删除***  
+│  │      GoodsDetailServlet.java  ***商品细节***  
+│  │      GoodsLessenServlet.java  ***商品数量减小***  
+│  │      GoodsListServlet.java  ***商品列表***   
+│  │      GoodsSearchServlet.java  ***商品搜索***  
+│  │      HotGoodsServlet.java  ***热销商品***  
+│  │      LogOffServlet.java  ***用户注销***  
+│  │      OrderConfirmServlet.java  ***订单确认***  
+│  │      OrderListServlet.java  ***订单列表***  
+│  │      OrderSumbitServlet.java  ***订单提交***  
+│  │      RecommendGoodsServlet.java  ***推荐商品***  
+│  │      UserChangeAddressServlet.java  ***用户基本信息更改***  
+│  │      UserChangePwdServlet.java  ***用户密码更改***  
+│  │      UserImpressionServlet.java  ***用户画像***  
+│  │      UserLoginServlet.java  ***用户登录***  
+│  │      UserRegisterServlet.java  ***用户注册***  
 │  │        
 │  └─utils  
-│          DBUtil.java  
-│          PriceUtils.java  
+│          DBUtil.java  ***数据库连接***  
+│          PriceUtils.java  ***价格的处理***  
 │            
-└─web  
-    │  admin_goods_add.jsp  
-    │  admin_goods_edit.jsp  
-    │  admin_goods_list.jsp  
-    │  admin_goods_sale.jsp  
-    │  admin_goods_statue.jsp  
-    │  admin_order_list.jsp  
-    │  admin_sale_show.jsp  
-    │  admin_sale_stats.jsp  
-    │  admin_sold.jsp  
-    │  admin_stock_add.jsp  
-    │  admin_user_add.jsp  
-    │  admin_user_change.jsp  
-    │  admin_user_list.jsp  
-    │  admin_view_list.jsp  
-    │  footer.jsp  
-    │  goods_cart.jsp  
-    │  goods_detail.jsp  
-    │  goods_list.jsp  
-    │  goods_search.jsp  
-    │  header.jsp  
-    │  header1.jsp  
-    │  header_1.jsp  
-    │  header_manage.jsp  
-    │  index.jsp  
-    │  index1.jsp  
-    │  index_manage.jsp  
-    │  order_list.jsp  
-    │  order_success.jsp  
-    │  order_sumbit.jsp  
-    │  page.jsp  
-    │  Recommend_Goods_List.jsp  
-    │  user_center.jsp  
-    │  user_impression.jsp  
-    │  user_login.jsp  
-    │  user_register.jsp  
+└─web  ***前端界面展示***    
+    │  admin_goods_add.jsp  ***商品添加***  
+    │  admin_goods_edit.jsp  ***商品细节编辑***  
+    │  admin_goods_list.jsp  ***商品展示***  
+    │  admin_goods_sale.jsp  ***商品售卖情况***  
+    │  admin_goods_statue.jsp  ***商品状态***  
+    │  admin_order_list.jsp  ***订单展示***  
+    │  admin_sale_show.jsp  ***售卖展示***  
+    │  admin_sale_stats.jsp  ***销售统计***  
+    │  admin_sold.jsp  ***商品售卖情况***  
+    │  admin_stock_add.jsp  ***商品库存更改***  
+    │  admin_user_add.jsp  ***销售人员添加***  
+    │  admin_user_change.jsp  ***销售人员口令更改***  
+    │  admin_user_list.jsp  ***销售人员列表***  
+    │  admin_view_list.jsp  ***商品被浏览记录***  
+    │  footer.jsp  ***页脚***  
+    │  goods_cart.jsp  ***购物车***  
+    │  goods_detail.jsp  ***商品细节***  
+    │  goods_list.jsp  ***商品列表***  
+    │  goods_search.jsp  ***商品搜索***  
+    │  header.jsp  ***网站首页导航栏***  
+    │  header1.jsp  ***销售人员导航栏***  
+    │  header_1.jsp  ***用户登录导航栏***  
+    │  header_manage.jsp  ***管理人员导航栏***   
+    │  index.jsp  ***网站首页***  
+    │  index1.jsp  ***销售人员首页***  
+    │  index_manage.jsp  ***管理人员首页***  
+    │  order_list.jsp  ***订单列表***  
+    │  order_success.jsp  ***订单提交成功***  
+    │  order_sumbit.jsp  ***订单提交***  
+    │  page.jsp  ***页码***  
+    │  Recommend_Goods_List.jsp  ***推荐商品列表***  
+    │  user_center.jsp  ***个人中心界面***  
+    │  user_impression.jsp  ***用户画像展示***  
+    │  user_login.jsp  ***用户登录界面***  
+    │  user_register.jsp  ***用户注册界面***  
     │      
-    ├─css    
+    ├─css    ***前端样式***  
     │      bootstrap-theme.css  
     │      bootstrap-theme.css.map  
     │      bootstrap-theme.min.css  
@@ -187,12 +187,12 @@
     │      layer.js  
     │      npm.js  
     │        
-    └─WEB-INF  
+    └─WEB-INF  ***依赖***  
         │  log4j.xml  
         │  pom.xml  
         │  web.xml  
         │    
-        └─lib  
+        └─lib  ***用到的jar包***  
                 asm-9.2.jar  
                 c3p0-0.9.1.2.jar  
                 cglib-3.3.0.jar  
