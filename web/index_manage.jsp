@@ -22,7 +22,7 @@
             <br><br>
             <p>欢迎来到后台管理，点击下面的按钮查看销售情况！</p>
             <br><br>
-            <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/adminorderitems" role="button">查看销售情况</a></p>
+            <p><a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/adminsale_stats?typeid=0" role="button">查看销售情况</a></p>
         </div>
     </div>
 </div>
